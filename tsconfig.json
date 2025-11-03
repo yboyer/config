@@ -1,20 +1,16 @@
 {
-  "extends": "@tsconfig/node22/tsconfig.json",
+  "extends": "@tsconfig/node24/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+      "@/*": ["./src/*"]
+    }
   },
-  "include": [
-    "./src"
-  ],
+  "include": ["./src"],
   "ts-node": {
     "files": true
-  },
+  }
 }

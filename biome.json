@@ -1,0 +1,143 @@
+{
+  "root": false,
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "linter": {
+    "domains": {
+      "project": "recommended",
+      "test": "recommended"
+    },
+    "rules": {
+      "complexity": {
+        "noUselessConstructor": "info",
+        "noUselessStringConcat": "error"
+      },
+      "correctness": {
+        "noUndeclaredDependencies": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedPrivateClassMembers": "info",
+        "noUnusedFunctionParameters": "off"
+      },
+      "nursery": {
+        "noImportCycles": "error",
+        "noShadow": "error",
+        "noUnusedExpressions": "error"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
+      },
+      "security": {},
+      "style": {
+        "noCommonJs": "error",
+        "noDoneCallback": "error",
+        "noNamespace": "error",
+        "noNestedTernary": "error",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "noRestrictedImports": "error",
+        "noUselessElse": "error",
+        "noYodaExpression": "error",
+        "useAsConstAssertion": "error",
+        "useCollapsedElseIf": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useConsistentObjectDefinitions": "error",
+        "useDefaultParameterLast": "error",
+        "useDefaultSwitchClause": "error",
+        "useExportType": "info",
+        "useGroupedAccessorPairs": "error",
+        "useObjectSpread": "error",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error",
+        "useSymbolDescription": "error",
+        "useThrowOnlyError": "error"
+      },
+      "suspicious": {
+        "noBitwiseOperators": "error",
+        "noConfusingVoidType": "info",
+        "noConsole": "warn",
+        "noMisplacedAssertion": "error",
+        "noTsIgnore": "off",
+        "useGuardForIn": "error",
+        "useIterableCallbackReturn": "off"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedAttributes": "on",
+        "useSortedKeys": "off",
+        "useSortedProperties": "on",
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "identifierOrder": "natural",
+            "groups": [
+              { "type": true, "source": ":NODE:" },
+              ":NODE:",
+              ":BLANK_LINE:",
+              { "type": true, "source": [":PACKAGE:"] },
+              [":PACKAGE:"],
+              ":BLANK_LINE:",
+              { "type": true, "source": [":ALIAS:"] },
+              [":ALIAS:"],
+              ":BLANK_LINE:",
+              { "type": true, "source": ":PATH:" },
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "formatter": {
+    "attributePosition": "auto",
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "expand": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "asNeeded",
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "es5",
+      "operatorLinebreak": "after"
+    },
+    "globals": ["require", "exports", "__filename", "module", "__dirname", "jest"]
+  },
+  "html": {
+    "formatter": {
+      "indentScriptAndStyle": true,
+      "selfCloseVoidElements": "always"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/package.json"],
+      "formatter": {
+        "expand": "always"
+      }
+    },
+    {
+      "includes": ["**/*.js"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noCommonJs": "off"
+          }
+        }
+      }
+    }
+  ]
+}

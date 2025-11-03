@@ -1,41 +1,23 @@
 {
-  "name": "@yboyer/eslint-config-backend-node",
+  "name": "@yboyer/config",
   "version": "0.0.32",
   "description": "",
-  "homepage": "https://github.com/yboyer/eslint-config-backend-node",
+  "homepage": "https://github.com/yboyer/config",
   "repository": {
     "type": "git",
-    "url": "git@github.com:yboyer/eslint-config-backend-node.git"
+    "url": "git@github.com:yboyer/config.git"
   },
   "license": "MIT",
   "files": [
-    ".eslintrc.js",
-    "prettierrc.json",
+    "biome.json",
     "tsconfig.json"
   ],
   "scripts": {
-    "prepublishOnly": "npm i --ignore-scripts"
+    "lint": "biome check . --config-path=./biome.json"
   },
   "dependencies": {
-    "@tsconfig/node22": "^22.0.2",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^9.1.2",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jest": "^28.14.0",
-    "eslint-plugin-n": "^17.23.1",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-native": "^5.0.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unused-imports": "^3.2.0",
-    "prettier": "^3.6.2",
-    "prettier-plugin-packagejson": "^2.5.19",
+    "@biomejs/biome": "^2.3.3",
+    "@tsconfig/node24": "^24.0.1",
     "typescript": "^5.9.3"
-  },
-  "engines": {
-    "node": ">=22.21.1"
   }
 }
