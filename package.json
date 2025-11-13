@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@biomejs/biome": "^2.3.5",
-    "@tsconfig/node24": "^24.0.1",
+    "@tsconfig/node24": "^24.0.2",
     "typescript": "^5.9.3"
   }
 }
