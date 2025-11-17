@@ -26,7 +26,8 @@
       "nursery": {
         "noImportCycles": "error",
         "noShadow": "error",
-        "noUnusedExpressions": "error"
+        "noUnusedExpressions": "error",
+        "noFloatingPromises": "error"
       },
       "performance": {
         "noAccumulatingSpread": "off"
@@ -39,7 +40,21 @@
         "noNestedTernary": "error",
         "noNonNullAssertion": "off",
         "noParameterAssign": "error",
-        "noRestrictedImports": "error",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "patterns": [
+              {
+                "group": "@/index",
+                "message": "Please use full path import instead."
+              },
+              {
+                "group": "**/dist/**",
+                "message": "Please import from source files instead of built files."
+              }
+            ]
+          }
+        },
         "noUselessElse": "error",
         "noYodaExpression": "error",
         "useAsConstAssertion": "error",
