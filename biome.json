@@ -9,25 +9,41 @@
   "linter": {
     "domains": {
       "project": "recommended",
-      "test": "recommended"
+			"test": "recommended"
     },
     "rules": {
       "complexity": {
-        "noStaticOnlyClass": "off",
-        "noUselessConstructor": "info",
-        "noUselessStringConcat": "error"
+        "noExtraBooleanCast": "error",
+        "noFlatMapIdentity": "error",
+        "noUselessCatch": "error",
+        "noUselessConstructor": "error",
+        "noUselessContinue": "error",
+        "noUselessEmptyExport": "error",
+        "noUselessEscapeInRegex": "error",
+        "noUselessFragments": "error",
+        "noUselessLabel": "error",
+        "noUselessLoneBlockStatements": "error",
+        "noUselessRename": "error",
+        "noUselessStringConcat": "error",
+        "noUselessStringRaw": "error",
+        "noUselessSwitchCase": "error",
+        "noUselessTernary": "error",
+        "noUselessThisAlias": "error",
+        "noUselessTypeConstraint": "error",
+        "noUselessUndefinedInitialization": "error",
+        "useFlatMap": "error",
+        "useIndexOf": "error",
+        "useLiteralKeys": "error"
       },
       "correctness": {
         "noUndeclaredDependencies": "error",
         "noUndeclaredVariables": "error",
-        "noUnusedPrivateClassMembers": "info",
-        "noUnusedFunctionParameters": "off"
+        "useParseIntRadix": "off"
       },
       "nursery": {
         "noImportCycles": "error",
         "noShadow": "error",
-        "noUnusedExpressions": "error",
-        "noFloatingPromises": "error"
+        "noUnusedExpressions": "error"
       },
       "performance": {
         "noAccumulatingSpread": "off"
@@ -57,29 +73,29 @@
         },
         "noUselessElse": "error",
         "noYodaExpression": "error",
+        "useArrayLiterals": "error",
         "useAsConstAssertion": "error",
         "useCollapsedElseIf": "error",
         "useConsistentBuiltinInstantiation": "error",
         "useConsistentObjectDefinitions": "error",
         "useDefaultParameterLast": "error",
         "useDefaultSwitchClause": "error",
-        "useExportType": "info",
+        "useExponentiationOperator": "off",
         "useGroupedAccessorPairs": "error",
         "useNodejsImportProtocol": "error",
         "useObjectSpread": "error",
         "useShorthandAssign": "error",
+        "useShorthandFunctionType": "error",
         "useSingleVarDeclarator": "error",
         "useSymbolDescription": "error",
+        "useTemplate": "error",
         "useThrowOnlyError": "error"
       },
       "suspicious": {
         "noBitwiseOperators": "error",
-        "noConfusingVoidType": "info",
-        "noConsole": "warn",
+        "noConsole": "error",
         "noMisplacedAssertion": "error",
-        "noTsIgnore": "off",
-        "useGuardForIn": "error",
-        "useIterableCallbackReturn": "off"
+        "useGuardForIn": "error"
       }
     }
   },
