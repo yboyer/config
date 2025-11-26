@@ -9,7 +9,7 @@
   "linter": {
     "domains": {
       "project": "recommended",
-			"test": "recommended"
+      "test": "recommended"
     },
     "rules": {
       "complexity": {
@@ -38,6 +38,10 @@
       "correctness": {
         "noUndeclaredDependencies": "error",
         "noUndeclaredVariables": "error",
+        "noUnusedImports": {
+          "level": "error",
+          "fix": "safe"
+        },
         "useParseIntRadix": "off"
       },
       "nursery": {
@@ -88,7 +92,10 @@
         "useShorthandFunctionType": "error",
         "useSingleVarDeclarator": "error",
         "useSymbolDescription": "error",
-        "useTemplate": "error",
+        "useTemplate": {
+          "level": "error",
+          "fix": "safe"
+        },
         "useThrowOnlyError": "error"
       },
       "suspicious": {
