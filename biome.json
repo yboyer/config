@@ -86,6 +86,10 @@
         "useDefaultSwitchClause": "error",
         "useExponentiationOperator": "off",
         "useGroupedAccessorPairs": "error",
+        "useImportType": {
+          "level": "error",
+          "options": { "style": "separatedType" }
+        },
         "useNodejsImportProtocol": "error",
         "useObjectSpread": "error",
         "useShorthandAssign": "error",
