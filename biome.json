@@ -45,9 +45,7 @@
         "useParseIntRadix": "off"
       },
       "nursery": {
-        "noImportCycles": "error",
-        "noShadow": "error",
-        "noUnusedExpressions": "error"
+        "noShadow": "error"
       },
       "performance": {
         "noAccumulatingSpread": "off"
@@ -105,7 +103,9 @@
       "suspicious": {
         "noBitwiseOperators": "error",
         "noConsole": "error",
+        "noImportCycles": "error",
         "noMisplacedAssertion": "error",
+        "noUnusedExpressions": "error",
         "useGuardForIn": "error"
       }
     }
@@ -113,7 +113,9 @@
   "assist": {
     "actions": {
       "source": {
+        "noDuplicateClasses": "on",
         "useSortedAttributes": "on",
+        "useSortedInterfaceMembers": "on",
         "useSortedKeys": "off",
         "useSortedProperties": "on",
         "organizeImports": {
