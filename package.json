@@ -16,7 +16,7 @@
     "lint": "biome check . --config-path=./biome.json"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.4.0",
+    "@biomejs/biome": "^2.4.1",
     "@tsconfig/node24": "^24.0.4",
     "typescript": "^5.9.3"
   }
