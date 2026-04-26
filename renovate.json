@@ -1,15 +1,33 @@
 {
-  "extends": ["config:base", ":dependencyDashboard", ":disableRateLimiting"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":disableRateLimiting",
+    "group:recommended",
+    ":pinAllExceptPeerDependencies"
+  ],
   "rangeStrategy": "bump",
-  "ignoreTests": true,
+  "minimumReleaseAge": "3 days",
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": null,
+    "commitMessagePrefix": "[SECURITY]",
+    "branchTopic": "{{{datasource}}}-{{{depNameSanitized}}}-vulnerability",
+    "prCreation": "immediate",
+    "enabled": true,
+    "labels": ["security"],
+    "assignees": ["yboyer"]
+  },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
+      "description": "Handle vulnerabilities immediately",
+      "matchUpdateTypes": ["vulnerability"],
+      "minimumReleaseAge": null,
+      "prCreation": "immediate"
     }
   ]
 }
