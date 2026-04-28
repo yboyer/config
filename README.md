@@ -34,7 +34,7 @@ Créer un fichier `biome.json` à la racine du projet avec le contenu suivant po
   "extends": "@yboyer/config/tsconfig.json",
   …
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"]
