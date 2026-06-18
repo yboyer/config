@@ -1,23 +1,23 @@
 {
-  "name": "@yboyer/config",
-  "version": "1.3.0",
-  "description": "",
-  "homepage": "https://github.com/yboyer/config",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:yboyer/config.git"
-  },
-  "license": "MIT",
-  "files": [
-    "biome.json",
-    "tsconfig.json"
-  ],
-  "scripts": {
-    "lint": "biome check . --config-path=./biome.json"
-  },
-  "dependencies": {
-    "@biomejs/biome": "2.4.16",
-    "@tsconfig/node24": "24.0.4",
-    "typescript": "6.0.3"
-  }
+	"name": "@yboyer/config",
+	"version": "1.3.0",
+	"description": "",
+	"homepage": "https://github.com/yboyer/config",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:yboyer/config.git"
+	},
+	"license": "MIT",
+	"files": [
+		"biome.json",
+		"tsconfig.json"
+	],
+	"scripts": {
+		"lint": "biome check . --config-path=./biome.json"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^2.4.16",
+		"@tsconfig/node24": "^24.0.4",
+		"typescript": "^6.0.3"
+	}
 }
