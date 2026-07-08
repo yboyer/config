@@ -8,10 +8,15 @@
   },
   "linter": {
     "domains": {
+      "next": "recommended",
       "project": "recommended",
-      "test": "recommended"
+      "react": "recommended",
+      "reactNative": "recommended",
+      "test": "recommended",
+      "types": "recommended"
     },
     "rules": {
+      "preset": "recommended",
       "complexity": {
         "noExtraBooleanCast": "error",
         "noFlatMapIdentity": "error",
@@ -31,6 +36,7 @@
         "noUselessThisAlias": "error",
         "noUselessTypeConstraint": "error",
         "noUselessUndefinedInitialization": "error",
+        "useArrayFind": "error",
         "useFlatMap": "error",
         "useIndexOf": "error",
         "useLiteralKeys": "error"
@@ -42,10 +48,17 @@
           "level": "error",
           "fix": "safe"
         },
+        "noUnusedInstantiation": "error",
         "useParseIntRadix": "off"
       },
       "nursery": {
-        "noShadow": "error"
+        "noReactNativeDeepImports": "error",
+        "useReactFunctionComponentDefinition": {
+          "level": "on",
+          "options": {
+            "namedComponents": "arrowFunction"
+          }
+        }
       },
       "performance": {
         "noAccumulatingSpread": "off"
@@ -54,6 +67,7 @@
       "style": {
         "noCommonJs": "error",
         "noDoneCallback": "error",
+        "noMultilineString": "error",
         "noNamespace": "error",
         "noNestedTernary": "error",
         "noNonNullAssertion": "off",
@@ -93,6 +107,7 @@
         "useShorthandAssign": "error",
         "useShorthandFunctionType": "error",
         "useSingleVarDeclarator": "error",
+        "useSpreadOverApply": "error",
         "useSymbolDescription": "error",
         "useTemplate": {
           "level": "error",
@@ -101,6 +116,7 @@
         "useThrowOnlyError": "error"
       },
       "suspicious": {
+        "noShadow": "error",
         "noBitwiseOperators": "error",
         "noConsole": "error",
         "noImportCycles": "error",
@@ -115,6 +131,7 @@
       "source": {
         "noDuplicateClasses": "on",
         "useSortedAttributes": "on",
+        "useSortedEnumMembers": "on",
         "useSortedInterfaceMembers": "on",
         "useSortedKeys": "off",
         "useSortedProperties": "on",
