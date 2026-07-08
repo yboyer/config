@@ -56,7 +56,7 @@
         "useReactFunctionComponentDefinition": {
           "level": "on",
           "options": {
-            "namedComponents": "arrowFunction"
+            "namedComponents": "functionDeclaration"
           }
         }
       },
