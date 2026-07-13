@@ -12,8 +12,7 @@
       "project": "recommended",
       "react": "recommended",
       "reactNative": "recommended",
-      "test": "recommended",
-      "types": "recommended"
+      "test": "recommended"
     },
     "rules": {
       "preset": "recommended",
@@ -36,7 +35,6 @@
         "noUselessThisAlias": "error",
         "noUselessTypeConstraint": "error",
         "noUselessUndefinedInitialization": "error",
-        "useArrayFind": "error",
         "useFlatMap": "error",
         "useIndexOf": "error",
         "useLiteralKeys": "error"
@@ -54,7 +52,7 @@
       "nursery": {
         "noReactNativeDeepImports": "error",
         "useReactFunctionComponentDefinition": {
-          "level": "on",
+          "level": "error",
           "options": {
             "namedComponents": "functionDeclaration"
           }
@@ -93,6 +91,7 @@
         "useAsConstAssertion": "error",
         "useCollapsedElseIf": "error",
         "useConsistentBuiltinInstantiation": "error",
+        "useConsistentCurlyBraces": "error",
         "useConsistentObjectDefinitions": "error",
         "useDefaultParameterLast": "error",
         "useDefaultSwitchClause": "error",
@@ -116,11 +115,11 @@
         "useThrowOnlyError": "error"
       },
       "suspicious": {
-        "noShadow": "error",
         "noBitwiseOperators": "error",
         "noConsole": "error",
         "noImportCycles": "error",
         "noMisplacedAssertion": "error",
+        "noShadow": "error",
         "noUnusedExpressions": "error",
         "useGuardForIn": "error"
       }

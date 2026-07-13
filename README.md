@@ -57,3 +57,16 @@ Pour appliquer les correctifs automatiques (formatage et imports) :
 ```sh
 npx biome check --apply .
 ```
+
+## Elements causing errors
+
+### Rules
+
+- useArrayFind
+- noFloatingPromises
+- useArraySortCompare
+- noUnnecessaryConditions
+
+### Domains
+
+- types
