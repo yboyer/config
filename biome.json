@@ -50,6 +50,7 @@
         "useParseIntRadix": "off"
       },
       "nursery": {
+        "noNegationInEqualityCheck": "error",
         "noReactNativeDeepImports": "error",
         "useReactFunctionComponentDefinition": {
           "level": "error",
@@ -120,6 +121,7 @@
         "noImportCycles": "error",
         "noMisplacedAssertion": "error",
         "noShadow": "error",
+        "noUnnecessaryConditions": "error",
         "noUnusedExpressions": "error",
         "useGuardForIn": "error"
       }
