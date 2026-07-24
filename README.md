@@ -62,9 +62,6 @@ npx biome check --apply .
 
 ### Rules
 
-- useArrayFind
-- noFloatingPromises
-- useArraySortCompare
 - noUnnecessaryConditions
 
 ### Domains
