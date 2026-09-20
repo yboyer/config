@@ -1,3 +1,18 @@
 {
-  "extends": ["github>yboyer/renovate-config"]
+  "extends": ["github>yboyer/renovate-config"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^README\\.md$/"],
+      "matchStrings": ["@biomejs/biome@\\^(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "depNameTemplate": "@biomejs/biome",
+      "datasourceTemplate": "npm"
+    }
+  ],
+  "packageRules": [
+    {
+      "groupName": "biome",
+      "matchPackageNames": ["@biomejs/biome"]
+    }
+  ]
 }
