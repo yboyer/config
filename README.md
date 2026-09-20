@@ -9,7 +9,7 @@
 Install Biome and the configuration as development dependencies:
 
 ```sh
-npm i -D @biomejs/biome@^2.5.12 @yboyer/config
+npm i -D @biomejs/biome@^2.5.14 @yboyer/config
 ```
 
 `@yboyer/config` declares Biome as a peer dependency and supports Biome `^2.5.12`.
