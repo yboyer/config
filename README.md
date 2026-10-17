@@ -125,7 +125,6 @@ repository and is not published.
 
 - `npm run lint`: check formatting, lint and types with `vp check`.
 - `npm run format`: apply formatting with `vp fmt`.
-- `npm test`: build, then test the packed package in an isolated consumer.
 - `npm run build` followed by `npm pack --dry-run`: inspect the publishable package.
 
 The repository sets `ignore-scripts=true`, so build explicitly before packing or

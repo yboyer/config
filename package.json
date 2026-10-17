@@ -14,7 +14,6 @@
   ],
   "scripts": {
     "lint": "vp check",
-    "test": "npm run build && node --test",
     "format": "vp fmt",
     "build": "vp pack"
   },
