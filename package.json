@@ -10,18 +10,42 @@
   "license": "MIT",
   "files": [
     "biome.json",
-    "tsconfig.json"
+    "dist"
   ],
   "scripts": {
-    "lint": "biome check . --config-path=./biome.json"
-  },
-  "dependencies": {
-    "@tsconfig/node24": "24.0.5"
+    "lint": "vp check",
+    "format": "vp fmt",
+    "build": "vp pack"
   },
   "peerDependencies": {
-    "@biomejs/biome": "^2.5.12"
+    "@biomejs/biome": "^2.5.12",
+    "vite-plus": "^1.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15"
+    "@tsconfig/node24": "24.0.5",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2",
+    "vite-plus": "1.1.0"
+  },
+  "exports": {
+    "./biome.json": "./biome.json",
+    "./package.json": "./package.json",
+    "./vite-plus": {
+      "types": "./dist/vite-plus.d.mts",
+      "import": "./dist/vite-plus.mjs",
+      "require": "./dist/vite-plus.mjs"
+    }
+  },
+  "peerDependenciesMeta": {
+    "@biomejs/biome": {
+      "optional": true
+    },
+    "vite-plus": {
+      "optional": true
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "eslint-plugin-perfectionist": "5.12.1"
   }
 }
