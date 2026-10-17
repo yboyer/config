@@ -2,6 +2,10 @@ import type { OxfmtConfig } from 'vite-plus/fmt'
 import type { OxlintConfig } from 'vite-plus/lint'
 
 export const lint: OxlintConfig = {
+  jsPlugins: [
+    { name: 'perfectionist', specifier: 'eslint-plugin-perfectionist' },
+    { name: 'vite-plus', specifier: 'vite-plus/oxlint-plugin' },
+  ],
   plugins: [
     'typescript',
     'unicorn',
@@ -205,8 +209,17 @@ export const lint: OxlintConfig = {
     'oxc/misrefactored-assign-op': 'error',
     'oxc/no-accumulating-spread': 'off',
     'oxc/no-const-enum': 'warn',
+    'perfectionist/sort-exports': [
+      'error',
+      {
+        type: 'alphabetical',
+        order: 'asc',
+        partitionByComment: true,
+        partitionByNewLine: true,
+      },
+    ],
     'prefer-arrow-callback': 'warn',
-    'prefer-const': 'warn',
+    'prefer-const': ['warn', { destructuring: 'all' }],
     'prefer-exponentiation-operator': 'off',
     'prefer-numeric-literals': 'warn',
     'prefer-object-spread': 'error',
@@ -264,13 +277,13 @@ export const lint: OxlintConfig = {
       },
     ],
     'typescript/no-duplicate-enum-values': 'warn',
-    'typescript/no-empty-interface': 'error',
-    'typescript/no-empty-object-type': 'warn',
+    'typescript/no-empty-interface': ['error', { allowSingleExtends: true }],
+    'typescript/no-empty-object-type': ['warn', { allowInterfaces: 'with-single-extends' }],
     'typescript/no-explicit-any': 'warn',
     'typescript/no-extra-non-null-assertion': 'warn',
     'typescript/no-floating-promises': 'error',
     'typescript/no-implied-eval': 'error',
-    'typescript/no-invalid-void-type': 'warn',
+    'typescript/no-invalid-void-type': ['warn', { allowInGenericTypeArguments: true }],
     'typescript/no-misused-new': 'error',
     'typescript/no-namespace': 'error',
     'typescript/no-non-null-asserted-optional-chain': 'error',
@@ -305,6 +318,7 @@ export const lint: OxlintConfig = {
     'unicorn/prefer-node-protocol': 'error',
     'use-isnan': 'error',
     'valid-typeof': 'error',
+    'vite-plus/prefer-vite-plus-imports': 'error',
     'vitest/no-duplicate-hooks': 'error',
     'vitest/no-focused-tests': 'warn',
     'vitest/no-identical-title': 'warn',
