@@ -212,8 +212,8 @@ export const lint: OxlintConfig = {
     'perfectionist/sort-exports': [
       'error',
       {
-        type: 'alphabetical',
-        order: 'asc',
+        type: 'natural',
+        ignoreCase: false,
         partitionByComment: true,
         partitionByNewLine: true,
       },
