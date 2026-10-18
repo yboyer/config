@@ -411,6 +411,8 @@ export const fmt: OxfmtConfig = {
   sortImports: {
     newlinesBetween: false,
     groups: [
+      'side_effect',
+      { newlinesBetween: true },
       'type-builtin',
       'value-builtin',
       { newlinesBetween: true },
