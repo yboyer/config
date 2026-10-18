@@ -356,6 +356,7 @@ export const lint: OxlintConfig = {
       files: ['**/*.js'],
       rules: {
         'import/no-commonjs': 'off',
+        'typescript/no-require-imports': 'off',
       },
     },
   ],
