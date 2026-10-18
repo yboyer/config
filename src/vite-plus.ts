@@ -47,6 +47,7 @@ export const lint: OxlintConfig = {
     'guard-for-in': 'error',
     'import/no-commonjs': 'error',
     'import/no-cycle': 'error',
+    'import/no-duplicates': 'error',
     'jest/no-done-callback': 'error',
     'jest/no-duplicate-hooks': 'error',
     'jest/no-export': 'error',
@@ -209,6 +210,21 @@ export const lint: OxlintConfig = {
     'oxc/misrefactored-assign-op': 'error',
     'oxc/no-accumulating-spread': 'off',
     'oxc/no-const-enum': 'warn',
+    'perfectionist/sort-enums': [
+      'error',
+      {
+        type: 'natural',
+        ignoreCase: false,
+        sortByValue: 'never',
+        partitionByComment: true,
+        partitionByNewLine: true,
+        useConfigurationIf: {
+          matchesAstSelector:
+            'TSEnumDeclaration:not(:has(TSEnumMember:not([initializer.type="Literal"][initializer.value=type(string)])))',
+        },
+      },
+      { type: 'unsorted' },
+    ],
     'perfectionist/sort-exports': [
       'error',
       {
@@ -218,6 +234,16 @@ export const lint: OxlintConfig = {
         partitionByNewLine: true,
       },
     ],
+    'perfectionist/sort-interfaces': [
+      'error',
+      {
+        type: 'natural',
+        ignoreCase: false,
+        partitionByComment: true,
+        partitionByNewLine: true,
+      },
+    ],
+    'perfectionist/sort-jsx-props': ['error', { type: 'natural', ignoreCase: false }],
     'prefer-arrow-callback': 'warn',
     'prefer-const': ['warn', { destructuring: 'all' }],
     'prefer-exponentiation-operator': 'off',
