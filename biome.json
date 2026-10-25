@@ -53,7 +53,7 @@
       "nursery": {
         "noFloatingPromises": "error",
         "noNegationInEqualityCheck": "error",
-        "noReactNativeDeepImports": "error",
+        "useTailwindSortedClasses": "error",
         "useReactFunctionComponentDefinition": {
           "level": "error",
           "options": {
@@ -122,6 +122,7 @@
         "noConsole": "error",
         "noImportCycles": "error",
         "noMisplacedAssertion": "error",
+        "noReactNativeDeepImports": "error",
         "noShadow": "error",
         "useArraySortCompare": "error",
         "noUnusedExpressions": "error",
@@ -133,9 +134,19 @@
     "actions": {
       "source": {
         "noDuplicateClasses": "on",
-        "useSortedAttributes": "on",
+        "useSortedAttributes": {
+          "level": "on",
+          "options": {
+            "sortFirst": ["key"]
+          }
+        },
         "useSortedEnumMembers": "on",
-        "useSortedInterfaceMembers": "on",
+        "useSortedInterfaceMembers": {
+          "level": "on",
+          "options": {
+            "partitionByNewLine": true
+          }
+        },
         "useSortedKeys": "off",
         "useSortedProperties": "on",
         "organizeImports": {

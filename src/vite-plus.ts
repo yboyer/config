@@ -257,7 +257,15 @@ export const lint: OxlintConfig = {
         partitionByNewLine: true,
       },
     ],
-    'perfectionist/sort-jsx-props': ['error', { type: 'natural', ignoreCase: false }],
+    'perfectionist/sort-jsx-props': [
+      'error',
+      {
+        type: 'natural',
+        ignoreCase: false,
+        groups: ['key', 'unknown'],
+        customGroups: [{ groupName: 'key', elementNamePattern: '^key$' }],
+      },
+    ],
     'prefer-arrow-callback': 'warn',
     'prefer-const': ['warn', { destructuring: 'all' }],
     'prefer-exponentiation-operator': 'off',
@@ -408,6 +416,9 @@ export const fmt: OxfmtConfig = {
   arrowParens: 'avoid',
   vueIndentScriptAndStyle: true,
   sortPackageJson: false,
+  sortTailwindcss: {
+    functions: ['clsx', 'tw', 'twMerge', 'twJoin', 'cn', 'cc', 'cnb', 'ctl', 'cva', 'tv'],
+  },
   sortImports: {
     newlinesBetween: false,
     groups: [
