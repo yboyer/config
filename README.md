@@ -9,7 +9,7 @@
 Install Biome and the configuration as development dependencies:
 
 ```sh
-npm i -D @biomejs/biome@^2.5.15 @yboyer/config
+npm i -D @biomejs/biome@^2.6.2 @yboyer/config
 ```
 
 ### 2. Configuration
@@ -124,6 +124,7 @@ mapping lives in the root `tsconfig.json`, which is only used to develop this
 repository and is not published.
 
 - `npm run lint`: check formatting, lint and types with `vp check`.
+- `npm run check:biome`: validate `biome.json` with pinned Biome 2.6.2, with formatting, lint and assists disabled.
 - `npm run format`: apply formatting with `vp fmt`.
 - `npm run build` followed by `npm pack --dry-run`: inspect the publishable package.
 

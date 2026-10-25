@@ -1,12 +1,14 @@
 # Biome rule coverage
 
-Audited against Biome 2.5.12 (the declared peer baseline) and Oxlint 1.87.0.
+The original rule audit below targets Biome 2.5.12 and Oxlint 1.87.0.
+The focused synchronization below targets the Biome 2.6.2 preset; the original
+rule inventory and counts have not been re-audited against 2.6.2.
 Recommendations and domain membership come from `biome explain` for every rule
 in the versioned configuration schema. Source correspondences come from the
 [official Biome mapping](https://biomejs.dev/linter/javascript/sources/) and the installed Oxlint rule registry.
 Mappings indicate comparable intent, not identical diagnostics or fixes.
 
-532 rules inspected; 280 active in the Biome preset.
+Original audit: 532 rules inspected; 280 active in the Biome 2.5.12 preset.
 The audit includes non-JavaScript rules; Oxlint does not lint CSS, JSON, GraphQL or HTML.
 Biome information-level diagnostics are represented as Oxlint warnings.
 Rules supplied by TypeScript syntax/type diagnostics are not treated as native lint mappings.
@@ -152,7 +154,7 @@ Rules supplied by TypeScript syntax/type diagnostics are not treated as native l
 | `nursery/noImpliedEval`                          | error                 | `typescript/no-implied-eval`, `no-new-func`                                                                   |
 | `nursery/noInvalidPropertyInitValue`             | info                  | No direct native mapping                                                                                      |
 | `nursery/noNegationInEqualityCheck`              | error                 | `unicorn/no-negation-in-equality-check`                                                                       |
-| `nursery/noReactNativeDeepImports`               | error                 | `no-restricted-imports`                                                                                       |
+| `suspicious/noReactNativeDeepImports`            | error                 | `no-restricted-imports`                                                                                       |
 | `nursery/noReactNativeRawText`                   | error                 | No direct native mapping                                                                                      |
 | `nursery/noReactStringRefs`                      | warn                  | `react/no-string-refs`                                                                                        |
 | `nursery/useDomNodeTextContent`                  | info                  | `unicorn/prefer-dom-node-text-content`                                                                        |
@@ -294,6 +296,46 @@ Rules supplied by TypeScript syntax/type diagnostics are not treated as native l
 | `suspicious/useIterableCallbackReturn`           | error                 | `array-callback-return`                                                                                       |
 | `suspicious/useNamespaceKeyword`                 | error                 | `typescript/prefer-namespace-keyword`                                                                         |
 
+## Synchronized sorting and import restrictions
+
+These settings require Biome 2.6.2 or newer, matching the declared peer baseline.
+The development dependency pins Biome to 2.6.2. Run `npm run check:biome` to load
+and validate `biome.json`, with formatting, lint and assists disabled. This
+configuration-only check also runs in PR and release workflows; it does not test
+the behaviors below.
+
+| Behavior                                           | Biome configuration                                          | Vite+ configuration                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| Preserve interface groups separated by blank lines | `useSortedInterfaceMembers.options.partitionByNewLine: true` | `perfectionist/sort-interfaces` with `partitionByNewLine: true`             |
+| Place `key` first in JSX                           | `useSortedAttributes.options.sortFirst: ["key"]`             | `perfectionist/sort-jsx-props` with a custom `^key$` group before `unknown` |
+| Sort Tailwind classes                              | `nursery/useTailwindSortedClasses: error`                    | Oxfmt `sortTailwindcss` enabled                                             |
+| Reject React Native internal imports               | `suspicious/noReactNativeDeepImports: error`                 | `no-restricted-imports` with `react-native/*`                               |
+
+The interface and React Native restrictions were already configured in the Vite+
+preset. The JSX rule keeps natural, case-sensitive sorting for the other props.
+Biome's attribute action also covers supported HTML markup; the Perfectionist
+rule covers JSX. Spreads remain sorting boundaries.
+
+Tailwind sorting targets `class` and `className`. Oxfmt additionally configures
+`clsx`, `tw`, `twMerge`, `twJoin`, `cn`, `cc`, `cnb`, `ctl`, `cva`, and `tv` to match
+the default function names recognized by Biome. Function argument traversal and
+custom utility ordering can differ between the engines; this is intent parity,
+not a guarantee of identical output. Biome's lint rule may require unsafe fixes
+(`biome check --write --unsafe`); Oxfmt sorts during formatting.
+
+For a custom Tailwind v4 theme, consumers should point `tailwind.stylesheet`
+(Biome) and `fmt.sortTailwindcss.stylesheet` (Vite+) at their own CSS entry point.
+The shared preset does not hard-code a project-specific stylesheet path.
+Tailwind lint rules beyond class sorting are not reproduced by this setting.
+
+## YAML formatting
+
+Both presets prefer single quotes in YAML: Biome uses
+`yaml.formatter.quoteStyle: "single"`, and Oxfmt uses `singleQuote: true`.
+Biome inherits global `bracketSpacing: true` for flow sequences, producing
+`[ master, main ]`. Oxfmt produces `[master, main]` and has no option to add
+spaces inside YAML flow sequences. This difference remains intentional.
+
 ## Limitations
 
 - Domain dependency/version discovery differs: native plugins are explicitly enabled.
@@ -302,6 +344,7 @@ Rules supplied by TypeScript syntax/type diagnostics are not treated as native l
 - `unicorn/no-useless-undefined` is deliberately omitted: it also forbids undefined in other contexts.
 - Unused imports and variables share one Oxlint rule and severity; Biome uses error for imports and warning for variables. The combined rule remains error to preserve unused-import enforcement.
 - TypeScript diagnostics remain enabled; they may report errors Biome did not.
-- Biome safe-fix preferences, assist sorting and non-JavaScript linting are not reproduced.
+- Biome safe-fix preferences and non-JavaScript linting are not reproduced.
+- Sorting parity is limited to the documented mappings; other Biome assists are not fully reproduced.
 - The underscore and rest-sibling exceptions for unused bindings are preserved where native options permit.
 - Multiple Biome rules can share one Oxlint rule; the stricter configured severity wins.
