@@ -328,6 +328,14 @@ For a custom Tailwind v4 theme, consumers should point `tailwind.stylesheet`
 The shared preset does not hard-code a project-specific stylesheet path.
 Tailwind lint rules beyond class sorting are not reproduced by this setting.
 
+## YAML formatting
+
+Both presets prefer single quotes in YAML: Biome uses
+`yaml.formatter.quoteStyle: "single"`, and Oxfmt uses `singleQuote: true`.
+Biome inherits global `bracketSpacing: true` for flow sequences, producing
+`[ master, main ]`. Oxfmt produces `[master, main]` and has no option to add
+spaces inside YAML flow sequences. This difference remains intentional.
+
 ## Limitations
 
 - Domain dependency/version discovery differs: native plugins are explicitly enabled.

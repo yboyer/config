@@ -193,6 +193,11 @@
     },
     "globals": ["require", "exports", "__filename", "module", "__dirname", "jest"]
   },
+  "yaml": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
   "html": {
     "formatter": {
       "indentScriptAndStyle": true,
