@@ -14,14 +14,16 @@
   ],
   "scripts": {
     "lint": "vp check",
+    "check:biome": "biome check --config-path=biome.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome.json",
     "format": "vp fmt",
     "build": "vp pack"
   },
   "peerDependencies": {
-    "@biomejs/biome": "^2.5.12",
+    "@biomejs/biome": "^2.6.2",
     "vite-plus": "^1.1.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.2",
     "@tsconfig/node24": "24.0.5",
     "@types/node": "24.19.2",
     "typescript": "7.0.2",
