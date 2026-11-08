@@ -39,8 +39,8 @@ For ES modules executed directly by Node.js, use the ESM configuration:
 It extends the shared configuration and requires file extensions in relative
 imports and `with { type: 'json' }` for JSON imports. It also disallows CommonJS
 in `.js` files. Explicit CommonJS files (`.cjs` and `.cts`) remain supported.
-Existing checks for unresolved imports, import cycles, deprecated imports and
-the `node:` protocol are inherited from the shared configuration.
+Existing checks for import cycles, deprecated imports and the `node:` protocol
+are inherited from the shared configuration.
 
 This preset does not force `.js` extensions for TypeScript imports. Use extensions
 that match your execution or compilation setup. It does not configure Node.js or
