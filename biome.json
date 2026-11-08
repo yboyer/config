@@ -8,15 +8,8 @@
   },
   "linter": {
     "domains": {
-      "next": "recommended",
       "project": "recommended",
-      "react": "recommended",
-      "reactNative": "recommended",
-      "tailwind": "recommended",
-      "tanstackQuery": "recommended",
-      "test": "recommended",
-      "types": "recommended",
-      "vue": "recommended"
+      "types": "recommended"
     },
     "rules": {
       "preset": "recommended",
