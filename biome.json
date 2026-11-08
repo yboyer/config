@@ -12,11 +12,16 @@
       "project": "recommended",
       "react": "recommended",
       "reactNative": "recommended",
-      "test": "recommended"
+      "tailwind": "recommended",
+      "tanstackQuery": "recommended",
+      "test": "recommended",
+      "types": "recommended",
+      "vue": "recommended"
     },
     "rules": {
       "preset": "recommended",
       "complexity": {
+        "noExcessiveNestedTestSuites": "error",
         "noExtraBooleanCast": "error",
         "noFlatMapIdentity": "error",
         "noUselessCatch": "error",
@@ -96,6 +101,7 @@
         "useConsistentBuiltinInstantiation": "error",
         "useConsistentCurlyBraces": "error",
         "useConsistentObjectDefinitions": "error",
+        "useConsistentTestIt": "error",
         "useDefaultParameterLast": "error",
         "useDefaultSwitchClause": "error",
         "useExponentiationOperator": "off",
@@ -115,18 +121,22 @@
           "level": "error",
           "fix": "safe"
         },
+        "useTestHooksInOrder": "error",
+        "useTestHooksOnTop": "error",
         "useThrowOnlyError": "error"
       },
       "suspicious": {
         "noBitwiseOperators": "error",
+        "noConditionalExpect": "error",
         "noConsole": "error",
         "noDeprecatedImports": "error",
         "noImportCycles": "error",
         "noMisplacedAssertion": "error",
-        "noReactNativeDeepImports": "error",
         "noShadow": "error",
+        "noSkippedTests": "error",
         "useArraySortCompare": "error",
         "noUnusedExpressions": "error",
+        "useExpect": "error",
         "useGuardForIn": "error"
       }
     }
