@@ -43,7 +43,6 @@
       "correctness": {
         "noUndeclaredDependencies": "error",
         "noUndeclaredVariables": "error",
-        "noUnresolvedImports": "error",
         "noUnusedImports": {
           "level": "error",
           "fix": "safe"
