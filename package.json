@@ -10,11 +10,12 @@
   "license": "MIT",
   "files": [
     "biome.json",
+    "biome-esm.json",
     "dist"
   ],
   "scripts": {
     "lint": "vp check",
-    "check:biome": "biome check --config-path=biome.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome.json",
+    "check:biome": "biome check --config-path=biome.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome.json && biome check --config-path=biome-esm.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome-esm.json",
     "format": "vp fmt",
     "build": "vp pack"
   },
@@ -32,6 +33,7 @@
   },
   "exports": {
     "./biome.json": "./biome.json",
+    "./biome-esm.json": "./biome-esm.json",
     "./package.json": "./package.json",
     "./vite-plus": {
       "types": "./dist/vite-plus.d.mts",

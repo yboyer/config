@@ -1,0 +1,25 @@
+{
+  "root": false,
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["./biome.json"],
+  "linter": {
+    "rules": {
+      "correctness": {
+        "useImportExtensions": "error",
+        "useJsonImportAttributes": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.js"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noCommonJs": "error"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -25,6 +25,27 @@ Create a `biome.json` file at the project root with the following content to ext
 }
 ```
 
+#### Node.js ESM
+
+For ES modules executed directly by Node.js, use the ESM configuration:
+
+```json
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@yboyer/config/biome-esm.json"]
+}
+```
+
+It extends the shared configuration and requires file extensions in relative
+imports and `with { type: 'json' }` for JSON imports. It also disallows CommonJS
+in `.js` files. Explicit CommonJS files (`.cjs` and `.cts`) remain supported.
+Existing checks for unresolved imports, import cycles, deprecated imports and
+the `node:` protocol are inherited from the shared configuration.
+
+This preset does not force `.js` extensions for TypeScript imports. Use extensions
+that match your execution or compilation setup. It does not configure Node.js or
+TypeScript; configure the consuming package for ESM separately.
+
 ### 3. Commands
 
 To check code conformance:
@@ -124,7 +145,7 @@ mapping lives in the root `tsconfig.json`, which is only used to develop this
 repository and is not published.
 
 - `npm run lint`: check formatting, lint and types with `vp check`.
-- `npm run check:biome`: validate `biome.json` with pinned Biome 2.6.2, with formatting, lint and assists disabled.
+- `npm run check:biome`: validate both Biome configurations with the pinned Biome version, with formatting, lint and assists disabled.
 - `npm run format`: apply formatting with `vp fmt`.
 - `npm run build` followed by `npm pack --dry-run`: inspect the publishable package.
 
