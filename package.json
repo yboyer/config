@@ -14,10 +14,11 @@
     "dist"
   ],
   "scripts": {
-    "lint": "vp check",
+    "lint": "biome check --config-path=biome.internal.json . && npm run typecheck",
     "check:biome": "biome check --config-path=biome.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome.json && biome check --config-path=biome-esm.json --formatter-enabled=false --linter-enabled=false --assist-enabled=false --no-errors-on-unmatched biome-esm.json",
-    "format": "vp fmt",
-    "build": "vp pack"
+    "format": "biome format --config-path=biome.internal.json --write .",
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "@biomejs/biome": "^2.6.2",
@@ -28,8 +29,8 @@
     "@tsconfig/node26": "26.0.1",
     "@types/node": "26.6.6",
     "typescript": "7.0.2",
-    "vite": "npm:@voidzero-dev/vite-plus-core@1.5.0",
-    "vite-plus": "1.5.0"
+    "vite-plus": "1.5.0",
+    "tsdown": "0.23.7"
   },
   "exports": {
     "./biome.json": "./biome.json",
@@ -52,8 +53,5 @@
   "type": "module",
   "dependencies": {
     "eslint-plugin-perfectionist": "5.13.0"
-  },
-  "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@1.5.0"
   }
 }
