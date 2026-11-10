@@ -9,7 +9,7 @@
 Install Biome and the configuration as development dependencies:
 
 ```sh
-npm i -D @biomejs/biome@^2.6.5 @yboyer/config
+npm i -D @biomejs/biome@^2.6.6 @yboyer/config
 ```
 
 ### 2. Configuration
