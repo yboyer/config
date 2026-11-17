@@ -2,9 +2,9 @@
 
 > Shared Biome and Vite+ configurations for JS/TS projects.
 
-## Usage with Biome
+## Biome
 
-### 1. Installation
+### Installation
 
 Install Biome and the configuration as development dependencies:
 
@@ -12,11 +12,11 @@ Install Biome and the configuration as development dependencies:
 npm i -D @biomejs/biome@^2.6.7 @yboyer/config
 ```
 
-### 2. Configuration
+### Configuration
 
 #### Biome
 
-Create a `biome.json` file at the project root with the following content to extend the shared configuration:
+Create `biome.json` at the project root:
 
 ```json
 {
@@ -36,17 +36,15 @@ For ES modules executed directly by Node.js, use the ESM configuration:
 }
 ```
 
-It extends the shared configuration and requires file extensions in relative
-imports and `with { type: 'json' }` for JSON imports. It also disallows CommonJS
-in `.js` files. Explicit CommonJS files (`.cjs` and `.cts`) remain supported.
-Existing checks for import cycles, deprecated imports and the `node:` protocol
-are inherited from the shared configuration.
+This preset requires file extensions for relative imports and `with { type: 'json' }`
+for JSON imports. It disallows CommonJS in `.js` files; `.cjs` and `.cts` remain
+supported. Checks for import cycles, deprecated imports and the `node:` protocol
+come from the base preset.
 
-This preset does not force `.js` extensions for TypeScript imports. Use extensions
-that match your execution or compilation setup. It does not configure Node.js or
-TypeScript; configure the consuming package for ESM separately.
+Use import extensions that match your execution or compilation setup. Configure
+Node.js and TypeScript for ESM separately; this preset only configures Biome.
 
-### 3. Commands
+### Commands
 
 To check code conformance:
 
@@ -57,7 +55,7 @@ npx biome check .
 To apply automatic fixes (formatting and imports):
 
 ```sh
-npx biome check --apply .
+npx biome check --write .
 ```
 
 ## Vite+
@@ -88,16 +86,8 @@ Run `vp check` to check formatting, lint and types, or `vp check --fix` to apply
 supported fixes. Standalone `vp lint` and `vp fmt` are also available.
 Configure your editor to use Vite+'s Oxc integration for migrated projects.
 
-A default export bundles both blocks:
-
-```ts
-import config from '@yboyer/config/vite-plus'
-
-export default defineConfig(config)
-```
-
-Use `mergeConfig` for project-specific adjustments. It merges nested objects and
-appends arrays to preserve the shared configuration:
+The default export bundles `lint` and `fmt`. Use it with `mergeConfig` for
+project-specific adjustments. Nested objects are merged and arrays are appended:
 
 ```ts
 import config from '@yboyer/config/vite-plus'
@@ -122,33 +112,42 @@ export default defineConfig(
 Keep the shared blocks in the workspace-root config, including in monorepos.
 `vp check` uses the root blocks; use their `overrides` for package-specific rules.
 
-## Items that cause errors
-
-### Rules
-
-- noUnnecessaryConditions
-
-### Domains
-
-- types
-
 ## Development
 
-The Vite+ preset is written in `src/vite-plus.ts`. Run `npm run build` (`vp pack`)
-to generate its JavaScript and declarations in `dist/`. Named exports and the
-default export are generated from the same TypeScript source.
+Use the Node.js version in `.node-version` and npm with `package-lock.json`.
+The repository uses tsdown for builds, Biome for formatting and lint, and
+TypeScript for type checking.
 
-The repository configuration loads the source directly, so linting and building
-do not depend on an existing `dist/` directory. The `@/` alias points to `src/`
-for source imports in TypeScript and the package build. Its TypeScript
-mapping lives in the root `tsconfig.json`, which is only used to develop this
-repository and is not published.
+Commands and VS Code use `biome.internal.json`, which extends the public ESM preset.
 
-- `npm run lint`: check formatting, lint and types with `vp check`.
-- `npm run check:biome`: validate both Biome configurations with the pinned Biome version, with formatting, lint and assists disabled.
-- `npm run format`: apply formatting with `vp fmt`.
-- `npm run build` followed by `npm pack --dry-run`: inspect the publishable package.
+- `npm ci`: install the locked dependencies with lifecycle scripts disabled.
+- `npm run lint`: check formatting, lint and imports, then check types.
+- `npm run typecheck`: run `tsc --noEmit`.
+- `npm run check:biome`: validate both public Biome configurations.
+- `npm run format`: apply formatting.
+- `npm run build`: compile the Vite+ preset from `src/vite-plus.ts` into `dist/`.
+- `npm pack --dry-run`: inspect the package after building.
 
-The repository sets `ignore-scripts=true`, so build explicitly before packing or
-publishing. The release workflow runs `npm ci` and `npm run build` before
-semantic-release. Generated files are published but are not committed.
+To apply safe lint fixes and organize imports, run
+`npx biome check --config-path=biome.internal.json --write .`.
+
+Build explicitly before packing or publishing: `.npmrc` disables lifecycle scripts.
+CI runs checks and builds before packing or releasing. Generated files are
+published but are not committed.
+
+### Compatibility
+
+Both public Biome presets and `@yboyer/config/vite-plus` remain supported.
+Vite+ stays as a development dependency for its public types and as an optional
+peer for consumers. Perfectionist remains a dependency of the Vite+ preset.
+Repository commands use the standalone tools.
+
+The build preserves `dist/vite-plus.mjs`, `dist/vite-plus.d.mts`, declaration maps,
+and the named and default exports. The `require` export still targets ESM;
+there is no separate CommonJS build.
+
+Internal checks use Biome rules and assists instead of Oxlint and Perfectionist.
+TypeScript checks types but does not replace every type-aware lint rule.
+Formatting and fixes can differ from Oxfmt, including Markdown and Tailwind
+function formatting. The public Vite+ preset keeps its own rules and options.
+See [BIOME-COVERAGE.md](./BIOME-COVERAGE.md) for the historical rule comparison.
