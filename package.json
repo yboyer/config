@@ -52,6 +52,6 @@
   },
   "type": "module",
   "dependencies": {
-    "eslint-plugin-perfectionist": "5.13.0"
+    "eslint-plugin-perfectionist": "5.14.0"
   }
 }
