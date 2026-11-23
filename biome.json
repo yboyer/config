@@ -197,6 +197,11 @@
     },
     "globals": ["require", "exports", "__filename", "module", "__dirname", "jest"]
   },
+  "css": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
   "yaml": {
     "formatter": {
       "quoteStyle": "single"
