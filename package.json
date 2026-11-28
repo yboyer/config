@@ -27,7 +27,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.9",
     "@tsconfig/node26": "26.0.2",
-    "@types/node": "26.6.6",
+    "@types/node": "26.6.10",
     "typescript": "7.0.2",
     "vite-plus": "1.7.0",
     "tsdown": "0.23.7"
